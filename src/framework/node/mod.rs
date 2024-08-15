@@ -10,7 +10,7 @@ use std::{
 use crate::framework::error::{Error, Result};
 pub use power_mode::Mode;
 
-const NODE_PATH: &str = "/dev/fas_rs";
+const NODE_PATH: &str = "/dev/fas_rs_mod";
 const REFRESH_TIME: Duration = Duration::from_secs(1);
 
 pub struct Node {

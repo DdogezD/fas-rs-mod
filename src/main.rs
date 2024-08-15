@@ -49,7 +49,7 @@ use misc::setprop;
 #[global_allocator]
 static GLOBAL: MiMalloc = MiMalloc;
 
-const USER_CONFIG: &str = "/sdcard/Android/fas-rs/games.toml";
+const USER_CONFIG: &str = "/sdcard/Android/fas-rs-mod/games.toml";
 
 fn main() -> Result<()> {
     let args: Vec<_> = env::args().collect();
@@ -63,6 +63,7 @@ fn main() -> Result<()> {
 
         return Ok(());
     } else if args[1] == "run" {
+        setprop("fas-rs-server-started", "true");
         run(&args[2]).unwrap_or_else(|e| error!("{e:#?}"));
     }
 
