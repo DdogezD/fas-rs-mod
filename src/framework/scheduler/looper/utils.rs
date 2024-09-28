@@ -14,6 +14,7 @@
 
 use std::time::{Duration, Instant};
 
+use likely_stable::unlikely;
 use log::info;
 
 use super::{super::FasData, buffer::BufferState, Buffer, Looper, State};
@@ -83,7 +84,7 @@ impl Looper {
     }
 
     pub fn buffer_update(&mut self, d: &FasData) -> Option<BufferState> {
-        if !self.windows_watcher.topapp_pids().contains(&d.pid) || d.frametime.is_zero() {
+        if unlikely(!self.windows_watcher.topapp_pids().contains(&d.pid) || d.frametime.is_zero()) {
             return None;
         }
 

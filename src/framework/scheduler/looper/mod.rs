@@ -20,6 +20,7 @@ mod utils;
 use std::time::{Duration, Instant};
 
 use frame_analyzer::Analyzer;
+use likely_stable::unlikely;
 #[cfg(debug_assertions)]
 use log::debug;
 use log::info;
@@ -103,9 +104,10 @@ impl Looper {
                 self.janked = false;
                 #[cfg(debug_assertions)]
                 debug!("janked: {}", self.janked);
+
                 if let Some(state) = self.buffer_update(&data) {
                     match state {
-                        BufferState::Usable => self.do_policy(target_fps),
+                        BufferState::Usable => self.do_policy(),
                         BufferState::Unusable => self.disable_fas(),
                     }
                 }
@@ -114,7 +116,7 @@ impl Looper {
                 #[cfg(debug_assertions)]
                 debug!("janked: {}", self.janked);
                 buffer.additional_frametime();
-                self.do_policy(target_fps);
+                self.do_policy();
             }
         }
     }
@@ -139,9 +141,9 @@ impl Looper {
     fn recv_message(&mut self, target_fps: Option<u32>) -> Option<FasData> {
         let target_frametime = target_fps.map(|fps| Duration::from_secs(1) / fps);
 
-        let time = if self.state != State::Working {
+        let time = if unlikely(self.state != State::Working) {
             Duration::from_millis(100)
-        } else if self.janked {
+        } else if unlikely(self.janked) {
             target_frametime.map_or(Duration::from_millis(100), |time| time / 4)
         } else {
             target_frametime.map_or(Duration::from_millis(100), |time| time * 2)
@@ -165,26 +167,25 @@ impl Looper {
         Ok(())
     }
 
-    fn do_policy(&mut self, target_fps: Option<u32>) {
-        if self.state != State::Working {
+    fn do_policy(&mut self) {
+        if unlikely(self.state != State::Working) {
             #[cfg(debug_assertions)]
             debug!("Not running policy!");
             return;
         }
 
-        let Some(event) = self
+        let Some(control) = self
             .buffer
             .as_ref()
-            .and_then(|buffer| buffer.event(&mut self.config, self.mode))
+            .and_then(|buffer| policy::pid_control(buffer, &mut self.config, self.mode))
         else {
             self.disable_fas();
             return;
         };
 
-        let target_fps = target_fps.unwrap_or(120);
+        #[cfg(debug_assertions)]
+        debug!("control: {control}khz");
 
-        let factor = Controller::scale_factor(target_fps, event.frame, event.target, self.janked);
-        self.controller
-            .fas_update_freq(factor, self.janked, self.mode);
+        self.controller.fas_update_freq(control);
     }
 }
