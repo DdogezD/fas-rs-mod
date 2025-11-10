@@ -20,7 +20,7 @@ MODDIR=${0%/*}
 DIR=/data/adb/schedroid-rs
 ANDROID=/data/data/android
 MERGE_FLAG=$DIR/.need_merge
-LOG=$DIR/fas_log.txt
+LOG=$DIR/log.txt
 
 until [ -d $ANDROID ]; do
 	sleep 3;

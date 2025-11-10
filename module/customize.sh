@@ -38,13 +38,13 @@ local_echo() {
 }
 
 if [ $ARCH != arm64 ]; then
-	local_print "设备不支持, 非arm64设备" "Only for arm64 device !"
+	local_print "- 设备不支持, 非arm64设备" "- Only for arm64 device !"
 	abort
 elif [ $API -le 30 ]; then
-	local_print "系统版本过低, 需要安卓12及以上的系统版本版本" "Required A12+ !"
+	local_print "- 系统版本过低, 需要安卓12及以上的系统版本版本" "- Required A12+ !"
 	abort
 elif uname -r | awk -F. '{if ($1 < 5 || ($1 == 5 && $2 < 8)) exit 0; else exit 1}'; then
-	local_print "内核版本过低，需要5.8或以上 !" "The kernel version is too low. Requires 5.8+ !"
+	local_print "- 内核版本过低，需要5.8或以上 !" "- The kernel version is too low. Requires 5.8+ !"
 	abort
 fi
 
@@ -55,11 +55,8 @@ else
 	cp $MODPATH/config.toml $CONF
 fi
 
-cp -f $MODPATH/README_CN.md $DIR/doc_cn.md
-cp -f $MODPATH/README_EN.md $DIR/doc_en.md
-
 set_perm_recursive $MODPATH 0 0 0755 0644
 set_perm $MODPATH/schedroid-rs 0 0 0755
 
-local_print "配置文件夹：/data/adb/schedroid-rs" "Configuration folder: /data/adb/schedroid-rs"
+local_print "- 配置文件夹：/data/adb/schedroid-rs" "- Configuration folder: /data/adb/schedroid-rs"
 local_echo "updateJson=https://github.com/DdogezD/schedroid-rs/raw/master/update/update.json" "updateJson=https://github.com/DdogezD/schedroid-rs/raw/master/update/update_en.json" >>$MODPATH/module.prop
