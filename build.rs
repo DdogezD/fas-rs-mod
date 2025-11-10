@@ -1,19 +1,19 @@
 // Copyright 2023-2025, shadow3, shadow3aaa
 //
-// This file is part of fas-rs.
+// This file is part of schedroid-rs.
 //
-// fas-rs is free software: you can redistribute it and/or modify it under
+// schedroid-rs is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free
 // Software Foundation, either version 3 of the License, or (at your option)
 // any later version.
 //
-// fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+// schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 // details.
 //
 // You should have received a copy of the GNU General Public License along
-// with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+// with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
 use std::{fs, io::Write};
 
@@ -110,13 +110,13 @@ fn update_json(data: &CargoConfig) -> Result<()> {
     let version = format!("v{version}");
 
     let zip_url =
-        format!("https://github.com/shadow3aaa/fas-rs/releases/download/{version}/fas-rs.zip");
+        format!("https://github.com/DdogezD/schedroid-rs/releases/download/{version}/schedroid-rs.zip");
 
     let cn = UpdateJson {
         versionCode: version_code,
         version: version.clone(),
         zipUrl: zip_url.clone(),
-        changelog: "https://github.com/shadow3aaa/fas-rs/raw/master/update/zh-CN/changelog.md"
+        changelog: "https://github.com/DdogezD/schedroid-rs/raw/master/update/zh-CN/changelog.md"
             .into(),
     };
 
@@ -124,7 +124,7 @@ fn update_json(data: &CargoConfig) -> Result<()> {
         versionCode: version_code,
         version,
         zipUrl: zip_url,
-        changelog: "https://github.com/shadow3aaa/fas-rs/raw/master/update/en-US/changelog.md"
+        changelog: "https://github.com/DdogezD/schedroid-rs/raw/master/update/en-US/changelog.md"
             .into(),
     };
 

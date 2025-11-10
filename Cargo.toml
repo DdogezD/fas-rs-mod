@@ -1,32 +1,32 @@
 # Copyright 2023-2025, YuSaki丶Kanade, dependabot[bot], shadow3, shadow3aaa
 #
-# This file is part of fas-rs.
+# This file is part of schedroid-rs.
 #
-# fas-rs is free software: you can redistribute it and/or modify it under
+# schedroid-rs is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+# schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 # details.
 #
 # You should have received a copy of the GNU General Public License along
-# with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+# with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
 [workspace]
 members = ["xtask"]
 
 [package]
-name = "fas-rs"
-version = "4.9.1"
+name = "schedroid-rs"
+version = "1.0.0"
 edition = "2024"
-description = "Frame aware scheduling for android. Requires kernel ebpf support."
-authors = ["shadow3"]
+description = "Userspace scheduling for android."
+authors = ["shadow3, Dog-EZ"]
 license = "GPL-3.0"
 readme = "README.md"
-repository = "https://github.com/shadow3aaa/fas-rs"
+repository = "https://github.com/DdogezD/schedroid-rs"
 
 [dependencies]
 likely_stable = "0.1.3"

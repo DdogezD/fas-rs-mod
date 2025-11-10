@@ -1,22 +1,22 @@
 #!/system/bin/sh
 # Copyright 2023-2025, shadow3, shadow3aaa
 #
-# This file is part of fas-rs.
+# This file is part of schedroid-rs.
 #
-# fas-rs is free software: you can redistribute it and/or modify it under
+# schedroid-rs is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+# schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 # details.
 #
 # You should have received a copy of the GNU General Public License along
-# with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+# with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
-DIR=/data/adb/fas-rs
+DIR=/data/adb/schedroid-rs
 CONF=$DIR/config.toml
 MERGE_FLAG=$DIR/.need_merge
 LOCALE=$(getprop persist.sys.locale)
@@ -59,7 +59,7 @@ cp -f $MODPATH/README_CN.md $DIR/doc_cn.md
 cp -f $MODPATH/README_EN.md $DIR/doc_en.md
 
 set_perm_recursive $MODPATH 0 0 0755 0644
-set_perm $MODPATH/fas-rs 0 0 0755
+set_perm $MODPATH/schedroid-rs 0 0 0755
 
-local_print "配置文件夹：/data/adb/fas-rs" "Configuration folder: /data/adb/fas-rs"
-local_echo "updateJson=https://github.com/shadow3aaa/fas-rs/raw/master/update/update.json" "updateJson=https://github.com/shadow3aaa/fas-rs/raw/master/update/update_en.json" >>$MODPATH/module.prop
+local_print "配置文件夹：/data/adb/schedroid-rs" "Configuration folder: /data/adb/schedroid-rs"
+local_echo "updateJson=https://github.com/DdogezD/schedroid-rs/raw/master/update/update.json" "updateJson=https://github.com/DdogezD/schedroid-rs/raw/master/update/update_en.json" >>$MODPATH/module.prop

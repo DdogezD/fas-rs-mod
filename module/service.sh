@@ -1,23 +1,23 @@
 #!/system/bin/sh
 # Copyright 2023-2025, dependabot[bot], shadow3, shadow3aaa
 #
-# This file is part of fas-rs.
+# This file is part of schedroid-rs.
 #
-# fas-rs is free software: you can redistribute it and/or modify it under
+# schedroid-rs is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+# schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 # details.
 #
 # You should have received a copy of the GNU General Public License along
-# with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+# with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
 MODDIR=${0%/*}
-DIR=/data/adb/fas-rs
+DIR=/data/adb/schedroid-rs
 ANDROID=/data/data/android
 MERGE_FLAG=$DIR/.need_merge
 LOG=$DIR/fas_log.txt
@@ -27,10 +27,10 @@ until [ -d $ANDROID ]; do
 done
 
 if [ -f $MERGE_FLAG ]; then
-	$MODDIR/fas-rs merge $MODDIR/config.toml >$DIR/.update_config.toml
+	$MODDIR/schedroid-rs merge $MODDIR/config.toml >$DIR/.update_config.toml
 	rm $MERGE_FLAG
 	mv $DIR/.update_config.toml $DIR/config.toml
 fi
 
-killall fas-rs
-nohup $MODDIR/fas-rs run $MODDIR/config.toml >$LOG 2>&1 &
+killall schedroid-rs
+nohup $MODDIR/schedroid-rs run $MODDIR/config.toml >$LOG 2>&1 &

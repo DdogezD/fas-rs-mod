@@ -28,7 +28,7 @@
   "scene_game_list": "Scene Game List",
   "scene_game_list_desc": "Use the game list from Scene (lower priority than the one in the configuration)",
   "config": "Basic Configuration",
-  "basic_settings": "Basic settings for fas-rs",
+  "basic_settings": "Basic settings for schedroid-rs",
   "games_config": "Game Configuration",
   "manage_settings": "Manage performance settings for your games",
   "tab_general": "General",

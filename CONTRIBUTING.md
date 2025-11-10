@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Contributing to fas-rs
+# Contributing to schedroid-rs
 
 First off, thanks for taking the time to contribute! ❤️
 
@@ -26,11 +26,11 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 > If you want to ask a question, we assume that you have read the available [Documentation](README.md).
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/shadow3aaa/fas-rs/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [Issues](https://github.com/DdogezD/schedroid-rs/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 If you then still feel the need to ask a question and need clarification, we recommend the following:
 
-- Open an [Issue](https://github.com/shadow3aaa/fas-rs/issues/new).
+- Open an [Issue](https://github.com/DdogezD/schedroid-rs/issues/new).
 - Provide as much context as you can about what you're running into.
 
 ## I Want To Contribute
@@ -48,10 +48,10 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 - Make sure that you are using the latest version.
 - Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the [documentation](README.md). If you are looking for support, you might want to check [this section](#i-have-a-question)).
-- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/shadow3aaa/fas-rsissues?q=label%3Abug).
+- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/DdogezD/schedroid-rsissues?q=label%3Abug).
 - Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.
 - Collect information about the bug:
-  - Debug log (get debug version in the [ci build](https://github.com/shadow3aaa/fas-rs/actions/workflows/ci.yml))
+  - Debug log (get debug version in the [ci build](https://github.com/DdogezD/schedroid-rs/actions/workflows/ci.yml))
   - OS, Platform and Version
   - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
@@ -60,32 +60,32 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
-- Open an [Issue](https://github.com/shadow3aaa/fas-rs/issues/new).
+- Open an [Issue](https://github.com/DdogezD/schedroid-rs/issues/new).
 - Explain the behavior you would expect and the actual behavior.
 - Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own.
 - Provide the information you collected in the previous section.
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for fas-rs, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+This section guides you through submitting an enhancement suggestion for schedroid-rs, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 <!-- omit in toc -->
 #### Before Submitting an Enhancement
 
 - Make sure that you are using the latest version.
 - Read the [documentation](README.md) carefully and find out if the functionality is already covered, maybe by an individual configuration.
-- Perform a [search](https://github.com/shadow3aaa/fas-rs/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+- Perform a [search](https://github.com/DdogezD/schedroid-rs/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an extension module.
 
 <!-- omit in toc -->
 #### How Do I Submit a Good Enhancement Suggestion?
 
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/shadow3aaa/fas-rs/issues).
+Enhancement suggestions are tracked as [GitHub issues](https://github.com/DdogezD/schedroid-rs/issues).
 
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- **Explain why this enhancement would be useful** to most fas-rs users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
+- **Explain why this enhancement would be useful** to most schedroid-rs users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 ## Code Contribution
 
@@ -99,15 +99,15 @@ We only accept commit information or comments written in Chinese or English.
 
 #### Code Style
 
-Most of the code of fas-rs is written in rust. Please make sure the code is formatted before submitting and try to resolve warnings.
+Most of the code of schedroid-rs is written in rust. Please make sure the code is formatted before submitting and try to resolve warnings.
 
-Format all codes of fas-rs:
+Format all codes of schedroid-rs:
 
 ```bash
 cargo xtask format
 ```
 
-Run lints and try to automatically fix warnings in fas-rs:
+Run lints and try to automatically fix warnings in schedroid-rs:
 
 ```bash
 cargo xtask lint --fix

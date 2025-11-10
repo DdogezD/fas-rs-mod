@@ -1,10 +1,8 @@
 <div align="center">
 
-<img src="https://github.com/shadow3aaa/fas-rs/raw/refs/heads/master/assets/icon.svg" width="160" height="160" style="display: block; margin: 0 auto;" alt="SVG Image">
+# **schedroid-rs**
 
-# **fas-rs**
-
-### Frame aware scheduling for android
+### Userspace scheduling for android
 
 [![简体中文][readme-cn-badge]][readme-cn-url]
 [![Stars][stars-badge]][stars-url]
@@ -19,14 +17,14 @@
 
 [readme-cn-badge]: https://img.shields.io/badge/README-简体中文-blue.svg?style=for-the-badge&logo=readme
 [readme-cn-url]: README.md
-[stars-badge]: https://img.shields.io/github/stars/shadow3aaa/fas-rs?style=for-the-badge&logo=github
-[stars-url]: https://github.com/shadow3aaa/fas-rs
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/shadow3aaa/fas-rs/ci.yml?style=for-the-badge&label=CI%20Build&logo=githubactions
-[ci-url]: https://github.com/shadow3aaa/fas-rs/actions/workflows/ci.yml
-[release-badge]: https://img.shields.io/github/v/release/shadow3aaa/fas-rs?style=for-the-badge&logo=rust
-[release-url]: https://github.com/shadow3aaa/fas-rs/releases/latest
-[download-badge]: https://img.shields.io/github/downloads/shadow3aaa/fas-rs/total?style=for-the-badge&logo=download
-[download-url]: https://github.com/shadow3aaa/fas-rs/releases/latest
+[stars-badge]: https://img.shields.io/github/stars/DdogezD/schedroid-rs?style=for-the-badge&logo=github
+[stars-url]: https://github.com/DdogezD/schedroid-rs
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/DdogezD/schedroid-rs/ci.yml?style=for-the-badge&label=CI%20Build&logo=githubactions
+[ci-url]: https://github.com/DdogezD/schedroid-rs/actions/workflows/ci.yml
+[release-badge]: https://img.shields.io/github/v/release/DdogezD/schedroid-rs?style=for-the-badge&logo=rust
+[release-url]: https://github.com/DdogezD/schedroid-rs/releases/latest
+[download-badge]: https://img.shields.io/github/downloads/DdogezD/schedroid-rs/total?style=for-the-badge&logo=download
+[download-url]: https://github.com/DdogezD/schedroid-rs/releases/latest
 [telegram-badge]: https://img.shields.io/badge/Group-blue?style=for-the-badge&logo=telegram&label=Telegram
 [telegram-url]: https://t.me/fas_rs_official
 
@@ -34,17 +32,17 @@
 
 > If the scene seen by the naked eye can be directly reflected in the scheduling, that is, if the scheduler is placed from the viewer's perspective to decide performance, can perfect performance control and maximum experience be achieved? `FAS (Frame Aware Scheduling)` is this scheduling concept, which tries to control performance by monitoring frame rendering to minimize overhead while ensuring rendering time.
 
-- ### **What is `fas-rs`?**
+- ### **What is `schedroid-rs`?**
 
-  - `fas-rs` is a user-space implementation of `FAS (Frame Aware Scheduling)`, which has the advantage of near-universal compatibility and flexibility on any device compared to the kernel-space `MI FEAS`.
+  - `schedroid-rs` is a user-space implementation of `FAS (Frame Aware Scheduling)`, which has the advantage of near-universal compatibility and flexibility on any device compared to the kernel-space `MI FEAS`.
 
 ## **Extension System**
 
-- To maximize user-space flexibility, `fas-rs` has its own extension system. For development instructions, see the [extension template repository](https://github.com/shadow3aaa/fas-rs-extension-module-template).
+- To maximize user-space flexibility, `schedroid-rs` has its own extension system. For development instructions, see the [extension template repository](https://github.com/DdogezD/schedroid-rs-extension-module-template).
 
 ## **Customization (Configuration)**
 
-- ### **Configuration Path: `/data/adb/fas-rs/config.toml`**
+- ### **Configuration Path: `/data/adb/schedroid-rs/config.toml`**
 
 - ### **Parameter (`config`) Description:**
 
@@ -67,14 +65,14 @@
   - **`"package"` = `target_fps`**
 
     - `package`: String, application package name
-    - `target_fps`: An array (e.g., `[30, 60, 120, 144]`) or a single integer, representing the target frame rate the game will render to, `fas-rs` will dynamically match at runtime.
+    - `target_fps`: An array (e.g., `[30, 60, 120, 144]`) or a single integer, representing the target frame rate the game will render to, `schedroid-rs` will dynamically match at runtime.
 
 - ### **Modes (`powersave` / `balance` / `performance` / `fast`) Description:**
 
   - #### **Mode Switching:**
 
-    - Currently, `fas-rs` does not have an official mode switching manager but integrates with the [`scene`](http://vtools.omarea.com) configuration interface. If you do not use scene, the default `balance` configuration is used.
-    - If you have some understanding of programming on Linux, you can switch to the corresponding mode by writing any of the 4 modes to the `/data/adb/fas-rs/mode` node, and you can also read it to know the current mode of `fas-rs`.
+    - Currently, `schedroid-rs` does not have an official mode switching manager but integrates with the [`scene`](http://vtools.omarea.com) configuration interface. If you do not use scene, the default `balance` configuration is used.
+    - If you have some understanding of programming on Linux, you can switch to the corresponding mode by writing any of the 4 modes to the `/data/adb/schedroid-rs/mode` node, and you can also read it to know the current mode of `schedroid-rs`.
 
   - #### **Mode Parameter Description:**
 
@@ -87,8 +85,8 @@
     - **core_temp_thresh:**
 
       - Type: `integer` or `"disabled"`
-      - `integer`: Core temperature to trigger thermal control by `fas-rs` (unit 0.001℃)
-      - `"disabled"`: Disable `fas-rs` built-in thermal control
+      - `integer`: Core temperature to trigger thermal control by `schedroid-rs` (unit 0.001℃)
+      - `"disabled"`: Disable `schedroid-rs` built-in thermal control
 
 ### **Standard Example of `config.toml` Configuration:**
 
@@ -129,7 +127,7 @@ core_temp_thresh = 95000
 
 ## **Configuration Merging**
 
-- ### `fas-rs` has a built-in configuration merging system to address future configuration feature changes. Its behavior is as follows
+- ### `schedroid-rs` has a built-in configuration merging system to address future configuration feature changes. Its behavior is as follows
 
   - Delete configurations in the local configuration that do not exist in the standard configuration
   - Insert configurations that are missing in the local configuration but exist in the standard configuration
@@ -146,7 +144,7 @@ core_temp_thresh = 95000
   - Manual example
 
     ```bash
-    fas-rs merge /path/to/std/profile
+    schedroid-rs merge /path/to/std/profile
     ```
 
 ## **Compilation**
@@ -165,8 +163,8 @@ rustup component add rust-src
 cargo install cargo-ndk
 
 # Clone
-git clone https://github.com/shadow3aaa/fas-rs
-cd fas-rs
+git clone https://github.com/DdogezD/schedroid-rs
+cd schedroid-rs
 
 # Compile
 cargo xtask build -r

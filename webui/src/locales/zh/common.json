@@ -24,7 +24,7 @@
   "fast_mode": "极速模式",
   "fast_mode_desc": "帧率表现至上",
   "config": "基础配置",
-  "basic_settings": "fas-rs基础设置",
+  "basic_settings": "schedroid-rs基础设置",
   "keep_std": "保留标准配置",
   "keep_std_desc": "每次更新时新的设置会覆盖(除了游戏列表)",
   "scene_game_list": "Scene 游戏列表",

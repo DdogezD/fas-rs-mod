@@ -1,6 +1,6 @@
-# fas-rs WebUI
+# schedroid-rs WebUI
 
-Web-based visual editor for fas-rs system configurations. Provides GUI management for performance profiles and system settings.
+Web-based visual editor for schedroid-rs system configurations. Provides GUI management for performance profiles and system settings.
 
 ## Features
 

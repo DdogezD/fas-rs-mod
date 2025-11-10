@@ -263,7 +263,7 @@ export function useConfig() {
     }
 
     const { errno, stdout, stderr } = await exec(
-      `cat /data/adb/fas-rs/config.toml`,
+      `cat /data/adb/schedroid-rs/config.toml`,
       { cwd: "/" },
     );
 
@@ -318,7 +318,7 @@ export function useConfig() {
         .replace(/\[\s+/g, "[")
         .replace(/\s+\]/g, "]");
 
-      const mkdirResult = await exec(`mkdir -p /data/adb/fas-rs`, {
+      const mkdirResult = await exec(`mkdir -p /data/adb/schedroid-rs`, {
         cwd: "/",
       });
       if (mkdirResult.errno !== 0) {
@@ -326,7 +326,7 @@ export function useConfig() {
       }
 
       const { errno, stderr } = await exec(
-        `echo '${tomlContent.replace(/'/g, "'\\''")}' > /data/adb/fas-rs/config.toml`,
+        `echo '${tomlContent.replace(/'/g, "'\\''")}' > /data/adb/schedroid-rs/config.toml`,
         { cwd: "/" },
       );
 

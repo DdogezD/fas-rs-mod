@@ -1,19 +1,19 @@
 // Copyright 2025-2025, dependabot[bot], shadow3aaa
 //
-// This file is part of fas-rs.
+// This file is part of schedroid-rs.
 //
-// fas-rs is free software: you can redistribute it and/or modify it under
+// schedroid-rs is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free
 // Software Foundation, either version 3 of the License, or (at your option)
 // any later version.
 //
-// fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+// schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 // details.
 //
 // You should have received a copy of the GNU General Public License along
-// with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+// with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
 mod zip_ext;
 
@@ -39,7 +39,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// Check the build of fas-rs
+    /// Check the build of schedroid-rs
     Check {
         /// Build in release mode (default: false)
         #[clap(short, long, default_value = "false")]
@@ -50,7 +50,7 @@ enum Commands {
         verbose: bool,
     },
 
-    /// Build fas-rs
+    /// Build schedroid-rs
     Build {
         /// Build in release mode (default: false)
         #[clap(short, long, default_value = "false")]
@@ -151,7 +151,7 @@ fn build(release: bool, verbose: bool) -> Result<()> {
     fs::remove_file(temp_dir.join(".gitignore")).unwrap();
     file::copy(
         bin_path(release),
-        temp_dir.join("fas-rs"),
+        temp_dir.join("schedroid-rs"),
         &file::CopyOptions::new().overwrite(true),
     )
     .unwrap();
@@ -165,14 +165,14 @@ fn build(release: bool, verbose: bool) -> Result<()> {
     .unwrap();
 
     let build_type = if release { "release" } else { "debug" };
-    let package_path = Path::new("output").join(format!("fas-rs({build_type}).zip"));
+    let package_path = Path::new("output").join(format!("schedroid-rs({build_type}).zip"));
 
     let options: FileOptions<'_, ()> = FileOptions::default()
         .compression_method(CompressionMethod::Deflated)
         .compression_level(Some(9));
     zip_create_from_directory_with_options(&package_path, &temp_dir, |_| options).unwrap();
 
-    println!("fas-rs built successfully: {:?}", package_path);
+    println!("schedroid-rs built successfully: {:?}", package_path);
 
     Ok(())
 }
@@ -268,7 +268,7 @@ fn bin_path(release: bool) -> PathBuf {
     Path::new("target")
         .join("aarch64-linux-android")
         .join(if release { "release" } else { "debug" })
-        .join("fas-rs")
+        .join("schedroid-rs")
 }
 
 fn cargo_ndk() -> Command {

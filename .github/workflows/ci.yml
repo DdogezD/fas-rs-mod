@@ -1,19 +1,19 @@
 # Copyright 2023-2025, dependabot[bot], shadow3, shadow3aaa
 #
-# This file is part of fas-rs.
+# This file is part of schedroid-rs.
 #
-# fas-rs is free software: you can redistribute it and/or modify it under
+# schedroid-rs is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or (at your option)
 # any later version.
 #
-# fas-rs is distributed in the hope that it will be useful, but WITHOUT ANY
+# schedroid-rs is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 # FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 # details.
 #
 # You should have received a copy of the GNU General Public License along
-# with fas-rs. If not, see <https://www.gnu.org/licenses/>.
+# with schedroid-rs. If not, see <https://www.gnu.org/licenses/>.
 
 name: ci-build
 on:
@@ -63,11 +63,11 @@ jobs:
       - name: Prepare artifacts
         run: |
           mkdir -p output/artifact/release
-          unzip "output/fas-rs(release).zip" -d output/artifact/release
+          unzip "output/schedroid-rs(release).zip" -d output/artifact/release
       - name: Upload release version
         uses: actions/upload-artifact@v4
         with:
-          name: fas-rs(release)
+          name: schedroid-rs(release)
           compression-level: 9
           path: output/artifact/release
   
@@ -109,11 +109,11 @@ jobs:
       - name: Prepare artifacts
         run: |
           mkdir -p output/artifact/debug
-          unzip "output/fas-rs(debug).zip" -d output/artifact/debug
+          unzip "output/schedroid-rs(debug).zip" -d output/artifact/debug
       - name: Upload debug version
         uses: actions/upload-artifact@v4
         with:
-          name: fas-rs(debug)
+          name: schedroid-rs(debug)
           compression-level: 9
           path: output/artifact/debug
   
@@ -131,10 +131,10 @@ jobs:
           path: artifacts
       - name: Package Artifacts
         run: |
-          cd "${{ github.workspace }}/artifacts/fas-rs(debug)"
-          zip -9 -rq "../fas-rs(debug)" .
-          cd "${{ github.workspace }}/artifacts/fas-rs(release)"
-          zip -9 -rq "../fas-rs(release)" .
+          cd "${{ github.workspace }}/artifacts/schedroid-rs(debug)"
+          zip -9 -rq "../schedroid-rs(debug)" .
+          cd "${{ github.workspace }}/artifacts/schedroid-rs(release)"
+          zip -9 -rq "../schedroid-rs(release)" .
       - name: Post to Debug Group
         shell: bash
         env:
@@ -151,4 +151,4 @@ jobs:
           ESCAPED=$(python3 -c 'import json,os,urllib.parse; print(urllib.parse.quote(json.dumps(os.environ["COMMIT_MESSAGE"])))')
           cd ${{ github.workspace }}
           echo $COMMIT_MESSAGE_FIXED
-          curl -v "https://api.telegram.org/bot${BOT_TOKEN}/sendMediaGroup?chat_id=${GROUP_DEBUG_ID}&message_thread_id=${THREAD_ID}&media=%5B%7B%22type%22:%22document%22,%20%22media%22:%22attach://debug_zip%22,%22parse_mode%22:%22MarkdownV2%22,%22caption%22:\"\"%7D,%7B%22type%22:%22document%22,%20%22media%22:%22attach://release_zip%22,%22parse_mode%22:%22MarkdownV2%22,%22caption%22:${ESCAPED}%7D%5D" -F debug_zip="@artifacts/fas-rs(debug).zip" -F release_zip="@artifacts/fas-rs(release).zip"
+          curl -v "https://api.telegram.org/bot${BOT_TOKEN}/sendMediaGroup?chat_id=${GROUP_DEBUG_ID}&message_thread_id=${THREAD_ID}&media=%5B%7B%22type%22:%22document%22,%20%22media%22:%22attach://debug_zip%22,%22parse_mode%22:%22MarkdownV2%22,%22caption%22:\"\"%7D,%7B%22type%22:%22document%22,%20%22media%22:%22attach://release_zip%22,%22parse_mode%22:%22MarkdownV2%22,%22caption%22:${ESCAPED}%7D%5D" -F debug_zip="@artifacts/schedroid-rs(debug).zip" -F release_zip="@artifacts/schedroid-rs(release).zip"

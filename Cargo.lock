@@ -720,8 +720,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "fas-rs"
-version = "4.9.1"
+name = "schedroid-rs"
+version = "1.0.0"
 dependencies = [
  "anyhow",
  "dumpsys-rs",
