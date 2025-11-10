@@ -17,16 +17,13 @@
 # with fas-rs. If not, see <https://www.gnu.org/licenses/>.
 
 MODDIR=${0%/*}
-DIR=/sdcard/Android/fas-rs
+DIR=/data/adb/fas-rs
+ANDROID=/data/data/android
 MERGE_FLAG=$DIR/.need_merge
 LOG=$DIR/fas_log.txt
 
-sh $MODDIR/vtools/init_vtools.sh $(realpath $MODDIR/module.prop)
-
-resetprop fas-rs-installed true
-
-until [ -d $DIR ]; do
-	sleep 1
+until [ -d $ANDROID ]; do
+	sleep 3;
 done
 
 if [ -f $MERGE_FLAG ]; then
@@ -36,4 +33,4 @@ if [ -f $MERGE_FLAG ]; then
 fi
 
 killall fas-rs
-RUST_BACKTRACE=1 nohup $MODDIR/fas-rs run $MODDIR/games.toml >$LOG 2>&1 &
+nohup $MODDIR/fas-rs run $MODDIR/games.toml >$LOG 2>&1 &

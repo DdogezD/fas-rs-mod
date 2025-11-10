@@ -42,7 +42,7 @@ export function ModeSwitch() {
     //   }
 
       try {
-        const { errno, stdout } = await exec(`cat /dev/fas_rs/mode`, { cwd: "/" });
+        const { errno, stdout } = await exec(`cat /data/adb/fas-rs/mode`, { cwd: "/" });
         if (errno === 0) {
           const mode = stdout.trim() as Mode;
           if (MODES.includes(mode)) {
@@ -81,7 +81,7 @@ export function ModeSwitch() {
     // }
 
     try {
-      const { errno, stderr } = await exec(`echo -n ${mode} > /dev/fas_rs/mode`, {
+      const { errno, stderr } = await exec(`echo -n ${mode} > /data/adb/fas-rs/mode`, {
         cwd: "/",
       });
 

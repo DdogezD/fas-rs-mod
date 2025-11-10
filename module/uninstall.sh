@@ -16,14 +16,12 @@
 # You should have received a copy of the GNU General Public License along
 # with fas-rs. If not, see <https://www.gnu.org/licenses/>.
 
-DIR=/sdcard/Android/fas-rs
+DIR=/data/adb/fas-rs
 
 {
-	until [ -d $DIR ] && [ -d /data ]; do
+	until [ -d $DIR ]; do
 		sleep 1
 	done
 
 	rm -rf $DIR
-	rm -f /data/powercfg.json
-	rm -f /data/powercfg.sh
 } & # do not block boot

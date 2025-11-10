@@ -44,7 +44,7 @@
 
 ## **Customization (Configuration)**
 
-- ### **Configuration Path: `/sdcard/Android/fas-rs/games.toml`**
+- ### **Configuration Path: `/data/adb/fas-rs/games.toml`**
 
 - ### **Parameter (`config`) Description:**
 
@@ -74,7 +74,7 @@
   - #### **Mode Switching:**
 
     - Currently, `fas-rs` does not have an official mode switching manager but integrates with the [`scene`](http://vtools.omarea.com) configuration interface. If you do not use scene, the default `balance` configuration is used.
-    - If you have some understanding of programming on Linux, you can switch to the corresponding mode by writing any of the 4 modes to the `/dev/fas_rs/mode` node, and you can also read it to know the current mode of `fas-rs`.
+    - If you have some understanding of programming on Linux, you can switch to the corresponding mode by writing any of the 4 modes to the `/data/adb/fas-rs/mode` node, and you can also read it to know the current mode of `fas-rs`.
 
   - #### **Mode Parameter Description:**
 

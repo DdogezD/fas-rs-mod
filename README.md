@@ -42,7 +42,7 @@
 
 ## **自定义(配置)**
 
-- ### **配置路径: `/sdcard/Android/fas-rs/games.toml`**
+- ### **配置路径: `/data/adb/fas-rs/games.toml`**
 
 - ### **参数(`config`)说明:**
 
@@ -72,7 +72,7 @@
   - #### **模式切换:**
 
     - 目前`fas-rs`还没有官方的切换模式的管理器，而是接入了[`scene`](http://vtools.omarea.com)的配置接口，如果你不用 scene 则默认使用`balance`的配置
-    - 如果你有在 linux 上编程的一些了解，向`/dev/fas_rs/mode`节点写入 4 模式中的任意一个即可切换到对应模式，同时读取它也可以知道现在`fas-rs`所处的模式
+    - 如果你有在 linux 上编程的一些了解，向`/data/adb/fas-rs/mode`节点写入 4 模式中的任意一个即可切换到对应模式，同时读取它也可以知道现在`fas-rs`所处的模式
 
   - #### **模式参数说明:**
 
