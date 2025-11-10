@@ -42,7 +42,7 @@
 
 ## **自定义(配置)**
 
-- ### **配置路径: `/data/adb/fas-rs/games.toml`**
+- ### **配置路径: `/data/adb/fas-rs/config.toml`**
 
 - ### **参数(`config`)说明:**
 
@@ -88,7 +88,7 @@
       - `整数`: 让`fas-rs`触发温控的核心温度(单位0.001℃)
       - `"disabled"`: 关闭`fas-rs`内置温控
 
-### **`games.toml`配置标准例:**
+### **`config.toml`配置标准例:**
 
 ```toml
 [config]

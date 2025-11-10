@@ -17,7 +17,7 @@
 # with fas-rs. If not, see <https://www.gnu.org/licenses/>.
 
 DIR=/data/adb/fas-rs
-CONF=$DIR/games.toml
+CONF=$DIR/config.toml
 MERGE_FLAG=$DIR/.need_merge
 LOCALE=$(getprop persist.sys.locale)
 
@@ -52,7 +52,7 @@ if [ -f $CONF ]; then
 	touch $MERGE_FLAG
 else
 	mkdir -p $DIR
-	cp $MODPATH/games.toml $CONF
+	cp $MODPATH/config.toml $CONF
 fi
 
 cp -f $MODPATH/README_CN.md $DIR/doc_cn.md

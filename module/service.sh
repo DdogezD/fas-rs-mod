@@ -27,10 +27,10 @@ until [ -d $ANDROID ]; do
 done
 
 if [ -f $MERGE_FLAG ]; then
-	$MODDIR/fas-rs merge $MODDIR/games.toml >$DIR/.update_games.toml
+	$MODDIR/fas-rs merge $MODDIR/config.toml >$DIR/.update_config.toml
 	rm $MERGE_FLAG
-	mv $DIR/.update_games.toml $DIR/games.toml
+	mv $DIR/.update_config.toml $DIR/config.toml
 fi
 
 killall fas-rs
-nohup $MODDIR/fas-rs run $MODDIR/games.toml >$LOG 2>&1 &
+nohup $MODDIR/fas-rs run $MODDIR/config.toml >$LOG 2>&1 &

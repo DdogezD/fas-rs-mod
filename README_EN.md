@@ -44,7 +44,7 @@
 
 ## **Customization (Configuration)**
 
-- ### **Configuration Path: `/data/adb/fas-rs/games.toml`**
+- ### **Configuration Path: `/data/adb/fas-rs/config.toml`**
 
 - ### **Parameter (`config`) Description:**
 
@@ -90,7 +90,7 @@
       - `integer`: Core temperature to trigger thermal control by `fas-rs` (unit 0.001℃)
       - `"disabled"`: Disable `fas-rs` built-in thermal control
 
-### **Standard Example of `games.toml` Configuration:**
+### **Standard Example of `config.toml` Configuration:**
 
 ```toml
 [config]

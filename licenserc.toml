@@ -28,7 +28,7 @@ includes = [
     "xtask/src/**",
     "xtask/Cargo.toml",
 ]
-excludes = ["module/games.toml", "module/META-INF/**", "module/*.prop"]
+excludes = ["module/config.toml", "module/META-INF/**", "module/*.prop"]
 
 [git]
 attrs = 'auto'
