@@ -1,6 +1,5 @@
 export type ConfigOptions = {
   keep_std: boolean;
-  scene_game_list: boolean;
   language: "en" | "zh";
 };
 

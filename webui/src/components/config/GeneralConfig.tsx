@@ -31,7 +31,7 @@ export function GeneralConfig({
         <CardDescription>{t("common:basic_settings")}</CardDescription>
       </CardHeader>
       <CardContent className="p-0">
-        <div className="p-4 border-b border-border/10 hover:bg-muted/5">
+        <div className="p-4 hover:bg-muted/5">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <label className="text-base font-medium">
@@ -48,25 +48,8 @@ export function GeneralConfig({
             />
           </div>
         </div>
-
-        <div className="p-4 hover:bg-muted/5">
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <label className="text-base font-medium">
-                {t("common:scene_game_list")}
-              </label>
-              <CardDescription className="text-xs">
-                {t("common:scene_game_list_desc")}
-              </CardDescription>
-            </div>
-            <Switch
-              checked={configOptions.scene_game_list}
-              onCheckedChange={() => toggleConfigOption("scene_game_list")}
-              className="data-[state=checked]:bg-primary"
-            />
-          </div>
-        </div>
       </CardContent>
     </Card>
   );
 }
+

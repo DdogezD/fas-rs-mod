@@ -20,7 +20,6 @@ import TOML from "@iarna/toml";
 
 const defaultConfig: ConfigOptions = {
   keep_std: true,
-  scene_game_list: true,
   language: "en",
 };
 
@@ -246,7 +245,6 @@ export function useConfig() {
       return {
         configOptions: {
           keep_std: true,
-          scene_game_list: true,
           language: "en",
         },
         gameList: {

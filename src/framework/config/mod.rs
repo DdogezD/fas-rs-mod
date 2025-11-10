@@ -78,7 +78,6 @@ impl Config {
         let pkg = pkg.as_ref();
 
         self.inner.config().game_list.contains_key(pkg)
-            || self.inner.config().scene_game_list.contains(pkg)
     }
 
     pub fn target_fps<S>(&mut self, pkg: S) -> Option<TargetFps>
@@ -88,41 +87,32 @@ impl Config {
         let pkg = pkg.as_ref();
         let pkg = pkg.split(':').next()?;
 
-        self.inner.config().game_list.get(pkg).cloned().map_or_else(
-            || {
-                if self.inner.config().scene_game_list.contains(pkg) {
-                    Some(TargetFps::Array(vec![30, 45, 60, 90, 120, 144]))
+        self.inner.config().game_list.get(pkg).cloned().and_then(|value| match value {
+            Value::Array(arr) => {
+                let mut arr: Vec<_> = arr
+                    .iter()
+                    .filter_map(toml::Value::as_integer)
+                    .map(|i| i as u32)
+                    .collect();
+                arr.sort_unstable();
+                Some(TargetFps::Array(arr))
+            }
+            Value::Integer(i) => Some(TargetFps::Value(i as u32)),
+            Value::String(s) => {
+                if s == "auto" {
+                    Some(TargetFps::Array(vec![30, 60, 90, 120, 144, 165, 180, 240]))
                 } else {
-                    None
-                }
-            },
-            |value| match value {
-                Value::Array(arr) => {
-                    let mut arr: Vec<_> = arr
-                        .iter()
-                        .filter_map(toml::Value::as_integer)
-                        .map(|i| i as u32)
-                        .collect();
-                    arr.sort_unstable();
-                    Some(TargetFps::Array(arr))
-                }
-                Value::Integer(i) => Some(TargetFps::Value(i as u32)),
-                Value::String(s) => {
-                    if s == "auto" {
-                        Some(TargetFps::Array(vec![30, 45, 60, 90, 120, 144]))
-                    } else {
-                        error!("Find target game {pkg} in config, but meet illegal data type");
-                        error!("Sugg: try \'{pkg} = \"auto\"\'");
-                        None
-                    }
-                }
-                _ => {
                     error!("Find target game {pkg} in config, but meet illegal data type");
-                    error!("Sugg: try \'{pkg} = \"auto\"\'");
+                    error!("Sugg: try '{pkg} = \"auto\"'");
                     None
                 }
-            },
-        )
+            }
+            _ => {
+                error!("Find target game {pkg} in config, but meet illegal data type");
+                error!("Sugg: try '{pkg} = \"auto\"'");
+                None
+            }
+        })
     }
 
     #[must_use]

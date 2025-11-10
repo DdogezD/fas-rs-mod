@@ -27,8 +27,6 @@
   "basic_settings": "schedroid-rs基础设置",
   "keep_std": "保留标准配置",
   "keep_std_desc": "每次更新时新的设置会覆盖(除了游戏列表)",
-  "scene_game_list": "Scene 游戏列表",
-  "scene_game_list_desc": "使用 Scene 中的游戏列表(优先级低于配置里面的游戏列表)",
   "games_config": "配置",
   "manage_settings": "管理游戏性能设置",
   "tab_general": "全局",
